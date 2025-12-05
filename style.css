@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  background-color: #E5F6FE;
+}
+#main #nav {
+  padding: 0vw 3vw 0vw 1vw;
+  height: 11vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#main #nav #logo {
+  height: 60px;
+  width: 90px;
+}
+#main #nav #logo img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#main #nav #nav-elements {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 100;
+  font-size: 1.5vw;
+}
+#main #nav #nav-elements p {
+  transition: 0.3s;
+  cursor: pointer;
+}
+#main #nav #nav-elements p:hover {
+  color: rgba(8, 233, 60, 0.699);
+}
+#main #hero {
+  height: 90%;
+  width: 100%;
+  background-image: url(hero-section-bg.jpg);
+}/*# sourceMappingURL=style.css.map */
