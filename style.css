@@ -24,21 +24,40 @@ html, body {
   align-items: center;
   justify-content: space-between;
 }
-#main #nav #logo {
-  height: 60px;
-  width: 90px;
-}
-#main #nav #logo img {
+#main #nav .nav-left {
   height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-#main #nav #nav-elements {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
+}
+#main #nav .nav-left img {
+  height: 90%;
+  width: 20%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#main #nav .nav-left p {
+  margin-top: 5px;
+  font-size: 1.2vw;
+  color: #0A81E1;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+#main #nav .nav-left p span {
+  font-size: 0.9vw;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+#main #nav #nav-elements {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   font-weight: 100;
   font-size: 1.5vw;
 }
@@ -47,10 +66,87 @@ html, body {
   cursor: pointer;
 }
 #main #nav #nav-elements p:hover {
-  color: rgba(8, 233, 60, 0.699);
+  color: rgba(8, 143, 233, 0.699);
+  scale: 1.1;
 }
 #main #hero {
   height: 90%;
   width: 100%;
-  background-image: url(hero-section-bg.jpg);
+  position: relative;
+}
+#main #hero img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#main #hero #hero-content {
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 70;
+}
+#main #hero #hero-content #tag {
+  display: inline-flex;
+  align-items: center;
+  background: #ffcc00;
+  color: #000;
+  padding: 0.6vw 1.3vw;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 5vh;
+  font-size: 1.5vw;
+}
+#main #hero #hero-content .icon {
+  margin-right: 6px;
+}
+#main #hero #hero-content h1 {
+  font-size: 5VW;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+#main #hero #hero-content h1 span {
+  color: #ffd900;
+}
+#main #hero #hero-content P {
+  font-size: 1.5VW;
+  width: 70%;
+  margin-bottom: 30px;
+}
+#main #hero #hero-content .buttons {
+  display: flex;
+  gap: 15px;
+}
+#main #hero #hero-content .buttons .btn {
+  padding: 1vw 1.5vw;
+  border-radius: 6px;
+  font-size: 1.7vw;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+#main #hero #hero-content .buttons .subscribe {
+  background: #ffcc00;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+#main #hero #hero-content .buttons .subscribe:hover {
+  background: #e6b800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.168);
+}
+#main #hero #hero-content .buttons .order {
+  background: white;
+  color: black;
+  border: 2px solid white;
+}
+#main #hero #hero-content .buttons .order:hover {
+  border-color: white;
+  transform: translateY(-3px);
 }/*# sourceMappingURL=style.css.map */
