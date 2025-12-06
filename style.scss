@@ -13,7 +13,7 @@ html, body{
 #main{
     height: 100%;
     width: 100%;
-    background-color: #7FB7E3;
+    background: linear-gradient(#F6FAFF, #FFF8EE);
 
     #nav{
         padding: 0vw 3vw 0vw 1vw;
@@ -42,7 +42,7 @@ html, body{
             p{
                 margin-top: 5px;
                 font-size: 1.2vw;
-                color: #2B2B2B;
+                color: #0B3B5A;
                 font-weight: 600;
                 line-height: 1;
                 letter-spacing: 0.2px;
@@ -51,6 +51,7 @@ html, body{
                     font-size: 0.9vw;
                     font-weight: 400;
                     margin-bottom: 5px;
+                    color: #333333;
                 }
             }
 
@@ -71,11 +72,11 @@ html, body{
             p{
                 transition: 0.3s;
                 cursor: pointer;
-                color: #2B2B2B;
+                color: #0B3B5A;
             }
             
             p:hover{
-                color: rgba(246,166,35,0.7);
+                color: rgba(11,59,90,0.75);
                 scale: 1.1;
             }
         }
@@ -99,15 +100,15 @@ html, body{
             top: 45%;
             left: 8%;
             transform: translateY(-50%);
-            color: #FFFFFF;
+            color: #0B3B5A;
             max-width: 70;
         
 
             #tag {
                 display: inline-flex;
                 align-items: center;
-                background: #F6A623;
-                color: #2B2B2B;
+                background: #FFF8EE;
+                color: #0B3B5A;
                 padding: 0.6vw 1.3vw;
                 border-radius: 20px;
                 font-weight: 600;
@@ -124,10 +125,10 @@ html, body{
                 line-height: 1.2;
                 font-weight: 700;
                 margin-bottom: 20px;
-                color: #FFFFFF;
+                color: #0B3B5A;
 
                 span {
-                    color: #F6A623;
+                    color: #0B3B5A;
                 }
             }
 
@@ -135,7 +136,7 @@ html, body{
                 font-size: 1.5VW;
                 width: 70%;
                 margin-bottom: 30px;
-                color: #FFFFFF;
+                color: #333333;
             }
         
 
@@ -154,25 +155,25 @@ html, body{
                 }
 
                 .subscribe {
-                    background: #F6A623;
-                    color: #2B2B2B;
-                    box-shadow: 0 4px 10px rgba(246,166,35,0.14);
+                    background: #0B3B5A;
+                    color: #FFF8EE;
+                    box-shadow: 0 4px 10px rgba(11,59,90,0.08);
 
                     &:hover {
-                        background: #e6b800;
+                        background: #0a324a;
                         transform: translateY(-2px);
-                        box-shadow: 0 6px 16px rgba(246,166,35,0.168);
+                        box-shadow: 0 6px 16px rgba(11,59,90,0.16);
                     }
                 }
 
 
                 .order {
-                    background: #FFF3DF;
-                    color: #2B2B2B;
-                    border: 2px solid #FFF3DF;
+                    background: #FFF8EE;
+                    color: #0B3B5A;
+                    border: 2px solid #FFF8EE;
 
                     &:hover {
-                        border-color: #FFF3DF;
+                        border-color: #FFF8EE;
                         transform: translateY(-3px);
                     }
                 }
