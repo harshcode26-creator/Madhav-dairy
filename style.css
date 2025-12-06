@@ -13,7 +13,7 @@ html, body {
 #main {
   height: 100%;
   width: 100%;
-  background-color: #E5F6FE;
+  background-color: #7FB7E3;
 }
 #main #nav {
   padding: 0vw 3vw 0vw 1vw;
@@ -42,7 +42,7 @@ html, body {
 #main #nav .nav-left p {
   margin-top: 5px;
   font-size: 1.2vw;
-  color: #0A81E1;
+  color: #2B2B2B;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.2px;
@@ -64,9 +64,10 @@ html, body {
 #main #nav #nav-elements p {
   transition: 0.3s;
   cursor: pointer;
+  color: #2B2B2B;
 }
 #main #nav #nav-elements p:hover {
-  color: rgba(8, 143, 233, 0.699);
+  color: rgba(246, 166, 35, 0.7);
   scale: 1.1;
 }
 #main #hero {
@@ -87,14 +88,14 @@ html, body {
   top: 45%;
   left: 8%;
   transform: translateY(-50%);
-  color: white;
+  color: #FFFFFF;
   max-width: 70;
 }
 #main #hero #hero-content #tag {
   display: inline-flex;
   align-items: center;
-  background: #ffcc00;
-  color: #000;
+  background: #F6A623;
+  color: #2B2B2B;
   padding: 0.6vw 1.3vw;
   border-radius: 20px;
   font-weight: 600;
@@ -109,14 +110,16 @@ html, body {
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #FFFFFF;
 }
 #main #hero #hero-content h1 span {
-  color: #ffd900;
+  color: #F6A623;
 }
 #main #hero #hero-content P {
   font-size: 1.5VW;
   width: 70%;
   margin-bottom: 30px;
+  color: #FFFFFF;
 }
 #main #hero #hero-content .buttons {
   display: flex;
@@ -132,21 +135,21 @@ html, body {
   transition: all 0.25s ease;
 }
 #main #hero #hero-content .buttons .subscribe {
-  background: #ffcc00;
-  color: black;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: #F6A623;
+  color: #2B2B2B;
+  box-shadow: 0 4px 10px rgba(246, 166, 35, 0.14);
 }
 #main #hero #hero-content .buttons .subscribe:hover {
   background: #e6b800;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.168);
+  box-shadow: 0 6px 16px rgba(246, 166, 35, 0.168);
 }
 #main #hero #hero-content .buttons .order {
-  background: white;
-  color: black;
-  border: 2px solid white;
+  background: #FFF3DF;
+  color: #2B2B2B;
+  border: 2px solid #FFF3DF;
 }
 #main #hero #hero-content .buttons .order:hover {
-  border-color: white;
+  border-color: #FFF3DF;
   transform: translateY(-3px);
 }/*# sourceMappingURL=style.css.map */
