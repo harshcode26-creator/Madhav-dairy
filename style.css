@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(#F6FAFF, #FFF8EE);
+}
+#main #nav {
+  padding: 0vw 3vw 0vw 1vw;
+  height: 11vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#main #nav .nav-left {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+#main #nav .nav-left img {
+  height: 90%;
+  width: 20%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#main #nav .nav-left p {
+  margin-top: 5px;
+  font-size: 1.2vw;
+  color: #0B3B5A;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+#main #nav .nav-left p span {
+  font-size: 0.9vw;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: #333333;
+}
+#main #nav #nav-elements {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-weight: 100;
+  font-size: 1.5vw;
+}
+#main #nav #nav-elements p {
+  transition: 0.3s;
+  cursor: pointer;
+  color: #0B3B5A;
+}
+#main #nav #nav-elements p:hover {
+  color: rgba(11, 59, 90, 0.75);
+  scale: 1.1;
+}
+#main #hero {
+  height: 90%;
+  width: 100%;
+  position: relative;
+}
+#main #hero img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#main #hero #hero-content {
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  transform: translateY(-50%);
+  color: #0B3B5A;
+  max-width: 70;
+}
+#main #hero #hero-content #tag {
+  display: inline-flex;
+  align-items: center;
+  background: #FFF8EE;
+  color: #0B3B5A;
+  padding: 0.6vw 1.3vw;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 5vh;
+  font-size: 1.5vw;
+}
+#main #hero #hero-content .icon {
+  margin-right: 6px;
+}
+#main #hero #hero-content h1 {
+  font-size: 5VW;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0B3B5A;
+}
+#main #hero #hero-content h1 span {
+  color: #0B3B5A;
+}
+#main #hero #hero-content P {
+  font-size: 1.5VW;
+  width: 70%;
+  margin-bottom: 30px;
+  color: #333333;
+}
+#main #hero #hero-content .buttons {
+  display: flex;
+  gap: 15px;
+}
+#main #hero #hero-content .buttons .btn {
+  padding: 1vw 1.5vw;
+  border-radius: 6px;
+  font-size: 1.7vw;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+#main #hero #hero-content .buttons .subscribe {
+  background: #0B3B5A;
+  color: #FFF8EE;
+  box-shadow: 0 4px 10px rgba(11, 59, 90, 0.08);
+}
+#main #hero #hero-content .buttons .subscribe:hover {
+  background: #0a324a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11, 59, 90, 0.16);
+}
+#main #hero #hero-content .buttons .order {
+  background: #FFF8EE;
+  color: #0B3B5A;
+  border: 2px solid #FFF8EE;
+}
+#main #hero #hero-content .buttons .order:hover {
+  border-color: #FFF8EE;
+  transform: translateY(-3px);
+}/*# sourceMappingURL=style.css.map */
