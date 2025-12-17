@@ -1,4 +1,25 @@
-//
+// function deliveryAnimation(){
+//   const cards = document.querySelectorAll(".delivery-cards .card");
+  
+//   const observer = new IntersectionObserver(
+//       (entries) => {
+//           entries.forEach((entry, index) => {
+//               if (entry.isIntersecting) {
+//                   setTimeout(() => {
+//                       entry.target.classList.add("show");
+//                   }, index * 120);
+//               }
+//           });
+//       },
+//       {
+//           threshold: 0.2
+//       }
+//   );
+  
+//   cards.forEach(card => observer.observe(card));
+
+// }
+
 
 function getImage(id){
   if (id === "1") return "assests/Milk.jpg";
@@ -69,3 +90,4 @@ async function showProducts() {
   }
 }
 showProducts();
+
