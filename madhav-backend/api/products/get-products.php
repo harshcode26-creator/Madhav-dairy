@@ -4,7 +4,18 @@ header("Access-Control-Allow-Origin: *");
 
 require_once "../../config/db.php";
 
-$result = mysqli_query($conn, "SELECT id, name, price FROM products");
+$sql = "
+    SELECT 
+        p.id,
+        p.name,
+        p.price,
+        p.category_id,
+        c.name AS category_name
+    FROM products p
+    LEFT JOIN categories c ON p.category_id = c.id
+";
+
+$result = mysqli_query($conn, $sql);
 
 $products = [];
 

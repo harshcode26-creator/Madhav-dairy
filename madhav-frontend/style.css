@@ -169,16 +169,21 @@ html, body {
 #main #products-heading p {
   margin-top: 10px;
 }
-#main #products {
-  height: 64%;
+#main .products {
+  height: 70%;
   width: 100%;
   background-color: #0B3B5A;
   padding: 0vw 0vw 0vw 2vw;
 }
-#main #products #container {
+#main .products h3 {
+  font-size: 2vw;
+  padding-top: 20px;
+  color: white;
+}
+#main .products .container {
   height: 100%;
   width: 100%;
-  padding: 3vw;
+  margin-top: 20px;
   display: flex;
   gap: 20px;
   flex-wrap: nowrap;
@@ -187,10 +192,11 @@ html, body {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
-#main #products #container::-webkit-scrollbar {
+#main .products .container::-webkit-scrollbar {
   display: none;
 }
-#main #products #container .product {
+#main .products .container .product {
+  height: 75%;
   flex-shrink: 0;
   width: 20vw;
   min-width: 260px;
@@ -203,13 +209,13 @@ html, body {
   gap: 12px;
   scroll-snap-align: start;
 }
-#main #products #container .product .image-box {
+#main .products .container .product .image-box {
   width: 100%;
   height: 170px;
   background: #e5e5e5;
   border-radius: 14px;
 }
-#main #products #container .product .image-box img {
+#main .products .container .product .image-box img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -217,26 +223,26 @@ html, body {
   -o-object-position: center;
      object-position: center;
 }
-#main #products #container .product .title {
+#main .products .container .product .title {
   font-size: 18px;
   font-weight: 700;
   color: #1c1c1c;
 }
-#main #products #container .product .desc {
+#main .products .container .product .desc {
   font-size: 14px;
   color: #b3b3b3;
 }
-#main #products #container .product .bottom-row {
+#main .products .container .product .bottom-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-#main #products #container .product .bottom-row .price {
+#main .products .container .product .bottom-row .price {
   font-size: 16px;
   font-weight: 600;
   color: #1c1c1c;
 }
-#main #products #container .product .bottom-row .add-btn {
+#main .products .container .product .bottom-row .add-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;

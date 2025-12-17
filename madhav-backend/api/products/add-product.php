@@ -8,17 +8,18 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $name = trim($data["name"] ?? "");
 $price = $data["price"] ?? "";
+$category_id = $data["category_id"] ?? "";
 
-if ($name === "" || $price === "") {
+if ($name === "" || $price === "" || $category_id === "") {
     echo json_encode([
         "status" => "error",
-        "message" => "Name and price are required"
+        "message" => "Name, price and category are required"
     ]);
     exit;
 }
 
-$query = "INSERT INTO products (name, price)
-          VALUES ('$name', '$price')";
+$query = "INSERT INTO products (name, price, category_id)
+          VALUES ('$name', '$price', '$category_id')";
 
 if (mysqli_query($conn, $query)) {
     echo json_encode([

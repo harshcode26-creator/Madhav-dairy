@@ -217,16 +217,23 @@ html, body{
 
     }
 
-    #products{
-        height: 64%;
+    .products{
+        height: 70%;
         width: 100%;
         background-color: #0B3B5A;
-        padding: 0vw 0vw 0vw 2vw;        
+        padding: 0vw 0vw 0vw 2vw; 
+        
+        h3{
+            font-size: 2vw;
+            padding-top: 20px;
+            color: white;
+            // padding-bottom: -10px;
+        }
 
-        #container{
+        .container{
             height: 100%;
             width: 100%;
-            padding: 3vw;
+            margin-top: 20px;
 
 
             display: flex;
@@ -244,6 +251,7 @@ html, body{
             }
 
             .product{
+                height: 75%;
                 flex-shrink: 0;
                 width: 20vw;
                 min-width: 260px;

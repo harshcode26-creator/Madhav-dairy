@@ -1,3 +1,5 @@
+//
+
 function getImage(id){
   if (id === "1") return "assests/Milk.jpg";
   if (id === "2") return "assests/Milk.jpg";
@@ -16,42 +18,54 @@ function getDesc(id){
 
   return "Fresh Product";
 }
+function productCard(product){
+  return `
+    <div class="product">
+        <div class="image-box">
+            <img src="${getImage(product.id)}" alt="${product.name}">
+        </div>
+
+        <div class="title">${product.name}</div>
+        <div class="desc">${getDesc(product.id)}</div>
+
+        <div class="bottom-row">
+            <div class="price">₹${product.price}</div>
+            <div class="add-btn">+</div>
+        </div>
+    </div>
+  `;
+}
+
+async function showProducts() {
+  try {
+    const res = await fetch("http://localhost/madhav-dairy/madhav-backend/api/products/get-products.php");
+    const data = await res.json();
+
+    if (data.status !== "success") return;
+
+    const milkContainer = document.querySelector(".milkContainer");
+    const curdContainer = document.querySelector(".curdContainer");
+    const processedContainer = document.querySelector(".processedContainer");
+
+    data.products.forEach(product => {
+
+      if (product.category_id == 1) {
+        milkContainer.innerHTML += productCard(product);
+      }
+
+      if (product.category_id == 2) {
+        curdContainer.innerHTML += productCard(product);
+      }
+
+      if (product.category_id == 3) {
+        processedContainer.innerHTML += productCard(product);
+      }
+
+    });
 
 
-function showProducts(){
-    fetch("http://localhost/madhav-dairy/backend/api/products/get-products.php")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("container");
-    
-        if (data.status !== "success") {
-          container.innerHTML = "<p>Failed to load products</p>";
-          return;
-        }
-
-        console.log(data);
-        
-    
-        data.products.forEach(product => {
-          container.innerHTML += `
-                <div class="product">
-                    <div class="image-box">
-                        <img src="${getImage(product.id)}" alt="${product.name}">
-                    </div>
-
-                    <div class="title">${product.name}</div>
-                    <div class="desc">${getDesc(product.id)}</div>
-
-                    <div class="bottom-row">
-                        <div class="price">₹${product.price}</div>
-                        <div class="add-btn">+</div>
-                    </div>
-                </div>
-          `;
-        });
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  } catch (error) {
+    console.error("Error loading products:", error);
+  }
 }
 showProducts();
