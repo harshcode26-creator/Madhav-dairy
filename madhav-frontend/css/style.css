@@ -16,6 +16,380 @@
   font-weight: 400;
   font-style: normal;
 }
+/* variables */
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* page */
+.login-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #C1E7FF, rgba(204, 245, 255, 0.7137254902));
+}
+.login-page .login-card {
+  width: 380px;
+  background: white;
+  border-radius: 18px;
+  padding: 35px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+.login-page .login-card h2 {
+  color: #1F2937;
+  font-size: 1.8vw;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.login-page .login-card .subtitle {
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.9vw;
+  margin-bottom: 25px;
+}
+.login-page .login-card form .field {
+  margin-bottom: 18px;
+}
+.login-page .login-card form .field label {
+  display: block;
+  font-size: 0.9vw;
+  color: #1F2937;
+  margin-bottom: 6px;
+}
+.login-page .login-card form .field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  outline: none;
+}
+.login-page .login-card form .field input:focus {
+  border-color: #8ad8ff;
+}
+.login-page .login-card form .password-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding-right: 12px;
+}
+.login-page .login-card form .password-box input {
+  border: none;
+  flex: 1;
+}
+.login-page .login-card form .password-box i {
+  color: #9CA3AF;
+  cursor: pointer;
+}
+.login-page .login-card form .password-box:focus-within {
+  border-color: #8ad8ff;
+}
+.login-page .login-card form .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8vw;
+  margin-bottom: 20px;
+}
+.login-page .login-card form .options a {
+  color: #8ac1ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-page .login-card form .options .remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #374151;
+}
+.login-page .login-card form .btn-primary {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  background: #8ad4ff;
+  color: #1F2937;
+  font-size: 1vw;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: 0.2s;
+}
+.login-page .login-card form .btn-primary:hover {
+  background: #61baff;
+}
+.login-page .login-card .btn-google {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95vw;
+  cursor: pointer;
+}
+.login-page .login-card .btn-google img {
+  height: 18px;
+}
+.login-page .login-card .footer-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.85vw;
+  color: #4B5563;
+}
+.login-page .login-card .footer-text a {
+  color: #8abfff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* variables */
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* page */
+.signup-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #C1E7FF, rgba(204, 245, 255, 0.7137254902));
+}
+.signup-page .signup-card {
+  width: 380px;
+  background: white;
+  border-radius: 18px;
+  padding: 35px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+.signup-page .signup-card h2 {
+  color: #1F2937;
+  font-size: 1.8vw;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.signup-page .signup-card .subtitle {
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.9vw;
+  margin-bottom: 25px;
+}
+.signup-page .signup-card .field {
+  margin-bottom: 18px;
+}
+.signup-page .signup-card .field label {
+  display: block;
+  font-size: 0.9vw;
+  color: #1F2937;
+  margin-bottom: 6px;
+}
+.signup-page .signup-card .field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  outline: none;
+}
+.signup-page .signup-card .field input:focus {
+  border-color: #8ad8ff;
+}
+.signup-page .signup-card .field p {
+  font-size: 12px;
+  margin-top: 3px;
+  text-align: center;
+}
+.signup-page .signup-card .password-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding-right: 12px;
+}
+.signup-page .signup-card .password-box input {
+  border: none;
+  flex: 1;
+}
+.signup-page .signup-card .password-box i {
+  color: #9CA3AF;
+  cursor: pointer;
+}
+.signup-page .signup-card .password-box:focus-within {
+  border-color: #8ad8ff;
+}
+.signup-page .signup-card .btn-primary {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  background: #8ad4ff;
+  color: #1F2937;
+  font-size: 1vw;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: 0.2s;
+}
+.signup-page .signup-card .btn-primary:hover {
+  background: #61baff;
+}
+.signup-page .signup-card .btn-google {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95vw;
+  cursor: pointer;
+}
+.signup-page .signup-card .btn-google:hover {
+  background-color: #eeefff;
+}
+.signup-page .signup-card .btn-google img {
+  height: 18px;
+}
+.signup-page .signup-card .footer-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.85vw;
+  color: #4B5563;
+}
+.signup-page .signup-card .footer-text span {
+  color: #8abfff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* variables */
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* page */
+.admin-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #C1E7FF, rgba(204, 245, 255, 0.7137254902));
+}
+.admin-page .admin-card {
+  width: 380px;
+  background: white;
+  border-radius: 18px;
+  padding: 35px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+.admin-page .admin-card h2 {
+  color: #1F2937;
+  font-size: 1.8vw;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.admin-page .admin-card .field {
+  margin-bottom: 18px;
+}
+.admin-page .admin-card .field label {
+  display: block;
+  font-size: 0.9vw;
+  color: #1F2937;
+  margin-bottom: 6px;
+}
+.admin-page .admin-card .field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  outline: none;
+}
+.admin-page .admin-card .field input:focus {
+  border-color: #8ad8ff;
+}
+.admin-page .admin-card .password-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding-right: 12px;
+}
+.admin-page .admin-card .password-box input {
+  border: none;
+  flex: 1;
+}
+.admin-page .admin-card .password-box i {
+  color: #9CA3AF;
+  cursor: pointer;
+}
+.admin-page .admin-card .password-box:focus-within {
+  border-color: #8ad8ff;
+}
+.admin-page .admin-card .btn-primary {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  background: #8ad4ff;
+  color: #1F2937;
+  font-size: 1vw;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: 0.2s;
+}
+.admin-page .admin-card .btn-primary:hover {
+  background: #61baff;
+}
+
 * {
   margin: 0;
   padding: 0;

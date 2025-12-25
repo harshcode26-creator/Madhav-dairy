@@ -105,3 +105,6 @@ async function showProducts() {
 }
 showProducts();
 
+document.querySelector(".auth-btn").addEventListener("click", function(){
+  window.location.href = "login.html";
+})

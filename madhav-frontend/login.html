@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Madhav Dairy</title>
+
+  <!-- Main compiled CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Remix Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <div class="login-page">
+    <div class="login-card">
+      <h2>Welcome Back!</h2>
+      <p class="subtitle">We missed you. Please enter your details.</p>
+
+      <form id="loginForm">
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-box">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+            <i class="ri-eye-off-line icon"></i>
+            <i class="ri-eye-line hidden icon"></i>
+          </div>
+        </div>
+
+        <div class="options">
+          <label class="remember">
+            <input type="checkbox" />
+            Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Sign in
+        </button>
+
+      </form>
+
+      <button class="btn-google" disabled>
+        <img
+          src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+          alt="Google"
+        />
+        Sign in with Google
+      </button>
+
+      <p class="footer-text">
+        Don’t have an account?
+        <a href="signup.html">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Auth JS -->
+  <script src="js/auth.js"></script>
+</body>
+</html>
