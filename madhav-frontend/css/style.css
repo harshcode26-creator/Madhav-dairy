@@ -314,6 +314,10 @@ body {
   width: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 /* page */
 .admin-page {
   height: 100%;
