@@ -1,10 +1,17 @@
 <?php
-session_start();
+require_once __DIR__ . "/auth.php";
 
-if (!isset($_SESSION["user_id"]) || $_SESSION["role"] !== "admin") {
-    echo json_encode([
-        "status" => "error",
-        "message" => "Admin access required"
-    ]);
-    exit;
+function requireAdmin() {
+    requireAuth();
+
+    $allowedRoles = ["admin", "superadmin"];
+
+    if (!in_array($_SESSION["role"], $allowedRoles)) {
+        http_response_code(403);
+        echo json_encode([
+            "status" => "error",
+            "message" => "Admin access required"
+        ]);
+        exit;
+    }
 }

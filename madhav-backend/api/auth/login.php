@@ -1,6 +1,5 @@
 <?php
 header("Content-Type: application/json");
-
 session_start();
 require_once "../../config/db.php";
 
@@ -10,6 +9,7 @@ $email = trim($data["email"] ?? "");
 $password = $data["password"] ?? "";
 
 if ($email === "" || $password === "") {
+    http_response_code(400);
     echo json_encode([
         "status" => "error",
         "message" => "Email and password are required"
@@ -17,9 +17,21 @@ if ($email === "" || $password === "") {
     exit;
 }
 
-$result = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+$sql = "
+    SELECT users.id, users.name, users.email, users.password, roles.role_name
+    FROM users
+    JOIN roles ON users.role_id = roles.id
+    WHERE users.email = ?
+";
+
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) === 0) {
+    http_response_code(401);
     echo json_encode([
         "status" => "error",
         "message" => "Invalid credentials"
@@ -30,6 +42,7 @@ if (mysqli_num_rows($result) === 0) {
 $user = mysqli_fetch_assoc($result);
 
 if (!password_verify($password, $user["password"])) {
+    http_response_code(401);
     echo json_encode([
         "status" => "error",
         "message" => "Invalid credentials"
@@ -37,8 +50,11 @@ if (!password_verify($password, $user["password"])) {
     exit;
 }
 
+/* Security: regenerate session */
+session_regenerate_id(true);
+
 $_SESSION["user_id"] = $user["id"];
-$_SESSION["role"] = $user["role"];
+$_SESSION["role"] = $user["role_name"];
 
 echo json_encode([
     "status" => "success",
@@ -47,6 +63,6 @@ echo json_encode([
         "id" => $user["id"],
         "name" => $user["name"],
         "email" => $user["email"],
-        "role" => $user["role"]
+        "role" => $user["role_name"]
     ]
 ]);

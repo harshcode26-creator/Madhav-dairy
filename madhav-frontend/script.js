@@ -83,7 +83,21 @@ async function showProducts() {
       }
 
     });
+    data.products.forEach(product => {
 
+      if (product.category_id == 1) {
+        milkContainer.innerHTML += productCard(product);
+      }
+
+      if (product.category_id == 2) {
+        curdContainer.innerHTML += productCard(product);
+      }
+
+      if (product.category_id == 3) {
+        processedContainer.innerHTML += productCard(product);
+      }
+
+    });
 
   } catch (error) {
     console.error("Error loading products:", error);
