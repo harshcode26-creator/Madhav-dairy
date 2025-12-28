@@ -1,3 +1,4 @@
+/*------------------------------------------- ALL FONTS ------------------------------------------*/
 @font-face {
   font-family: "Mukta Vani";
   src: url("../assets/fonts/MuktaVani/MuktaVaani-Regular.ttf") format("truetype");
@@ -16,6 +17,8 @@
   font-weight: 400;
   font-style: normal;
 }
+/*------------------------------------------- ALL FONTS ------------------------------------------*/
+/*------------------------------------------- IMPORT OTHER PAGES SCSS ------------------------------------------*/
 /* variables */
 /* reset */
 * {
@@ -394,6 +397,7 @@ body {
   background: #61baff;
 }
 
+/*------------------------------------------- IMPORT OTHER PAGES SCSS ------------------------------------------*/
 * {
   margin: 0;
   padding: 0;
@@ -406,11 +410,34 @@ html, body {
   width: 100%;
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.lang-guj {
+  font-family: "Mukta Vani", sans-serif;
+}
+
+/* Language switch micro-animation */
+body.lang-switching {
+  pointer-events: none;
+}
+
+body.lang-switching [data-i18n] {
+  opacity: 0.85;
+  transition: opacity 150ms ease-out;
+}
+
+[data-i18n] {
+  transition: opacity 150ms ease-out;
+}
+
 #main {
   height: 100%;
   width: 100%;
   background: linear-gradient(#F6FAFF, #FFF8EE);
-  /* Responsive */
+  /* Responsive delivery*/
 }
 #main #nav {
   padding: 0 4vw;
@@ -435,13 +462,15 @@ html, body {
 }
 #main #nav .nav-left p {
   margin-top: 4px;
+  line-height: 1.1;
+}
+#main #nav .nav-left p #heading {
   font-size: 1.1vw;
   font-weight: 600;
   color: #0B3B5A;
-  line-height: 1.1;
 }
-#main #nav .nav-left p span {
-  font-size: 0.8vw;
+#main #nav .nav-left p #heading-title {
+  font-size: 0.9vw;
   font-weight: 400;
   color: #333333;
 }
@@ -498,15 +527,17 @@ html, body {
   font-weight: 600;
   cursor: pointer;
   transition: 0.25s;
+  text-decoration: none;
 }
 #main #nav .nav-right .auth-btn:hover {
   background: #0a324a;
   transform: translateY(-1px);
 }
 #main #hero {
-  height: 90%;
+  height: 90vh;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 #main #hero img {
   height: 100%;
@@ -596,6 +627,56 @@ html, body {
   background: linear-gradient(to bottom, rgba(246, 250, 255, 0) 0%, #F6FAFF 100%);
   pointer-events: none;
 }
+@media (max-width: 768px) {
+  #main {
+    /* Horizontal scroll cards */
+    /* Grid layout cards */
+  }
+  #main #products-heading {
+    padding: 10vw 4vw;
+  }
+  #main #products-heading h3 {
+    font-size: 7vw;
+  }
+  #main #products-heading p {
+    font-size: 14px;
+  }
+  #main .products {
+    padding: 6vw 4vw;
+  }
+  #main .products .category-header {
+    padding: 18px 20px;
+    max-width: 100%;
+  }
+  #main .products .category-header h3 {
+    font-size: 20px;
+  }
+  #main .products .category-header p {
+    font-size: 14px;
+  }
+  #main .container {
+    gap: 16px;
+  }
+  #main .container .product {
+    min-width: 220px;
+    width: 220px;
+  }
+  #main .container.grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  #main .container.grid-layout .product {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  #main .container.grid-layout {
+    grid-template-columns: 1fr;
+  }
+  #main .container .product {
+    min-width: 200px;
+  }
+}
 #main #products-heading {
   width: 100%;
   background: linear-gradient(to bottom, #F6FAFF, #FFF8EE);
@@ -635,8 +716,9 @@ html, body {
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: none;
   -webkit-overflow-scrolling: touch;
+  contain: layout paint;
 }
 #main .products .container::-webkit-scrollbar {
   display: none;
@@ -645,6 +727,8 @@ html, body {
   flex-shrink: 0;
   width: 20vw;
   min-width: 260px;
+  will-change: transform;
+  transform: translateZ(0);
   background: #0B3B5A;
   border-radius: 20px;
   padding: 16px;
@@ -652,12 +736,12 @@ html, body {
   flex-direction: column;
   gap: 14px;
   scroll-snap-align: start;
-  box-shadow: 0 12px 30px rgba(11, 59, 90, 0.15);
+  box-shadow: 0 4px 12px rgba(11, 59, 90, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #main .products .container .product:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(11, 59, 90, 0.25);
+  box-shadow: 0 8px 20px rgba(11, 59, 90, 0.25);
 }
 #main .products .container .product .image-box {
   width: 100%;
@@ -716,7 +800,7 @@ html, body {
   padding: 20px 25px;
   margin-bottom: 24px;
   max-width: 500px;
-  box-shadow: 0 10px 30px rgba(11, 59, 90, 0.08);
+  box-shadow: 0 8px 20px rgba(11, 59, 90, 0.08);
   border-left: 6px solid #0B3B5A;
 }
 #main .category-header h6 {
@@ -746,53 +830,8 @@ html, body {
   background: linear-gradient(to bottom, #FFF8EE 0%, #F6FAFF 100%);
 }
 @media (max-width: 768px) {
-  #main {
-    /* Horizontal scroll cards */
-    /* Grid layout cards */
-  }
-  #main #products-heading {
-    padding: 10vw 4vw;
-  }
-  #main #products-heading h3 {
-    font-size: 7vw;
-  }
-  #main #products-heading p {
-    font-size: 14px;
-  }
-  #main .products {
-    padding: 6vw 4vw;
-  }
-  #main .products .category-header {
-    padding: 18px 20px;
-    max-width: 100%;
-  }
-  #main .products .category-header h3 {
-    font-size: 20px;
-  }
-  #main .products .category-header p {
-    font-size: 14px;
-  }
   #main .container {
-    gap: 16px;
-  }
-  #main .container .product {
-    min-width: 220px;
-    width: 220px;
-  }
-  #main .container.grid-layout {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  #main .container.grid-layout .product {
-    width: 100%;
-  }
-}
-@media (max-width: 480px) {
-  #main .container.grid-layout {
-    grid-template-columns: 1fr;
-  }
-  #main .container .product {
-    min-width: 200px;
+    scroll-snap-type: x proximity;
   }
 }
 #main #delivery {
@@ -866,6 +905,16 @@ html, body {
 }
 #main #delivery .delivery-cards .card .icon.green {
   background: #22C55E;
+}
+@media (max-width: 900px) {
+  #main #delivery .delivery-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  #main #delivery .delivery-cards {
+    grid-template-columns: 1fr;
+  }
 }
 #main .footer {
   background: linear-gradient(180deg, #0b1220, #0a1020);
@@ -996,14 +1045,4 @@ html, body {
 }
 #main .footer-bottom .footer-links a:hover {
   color: #4fc3f7;
-}
-@media (max-width: 900px) {
-  #main #delivery .delivery-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 520px) {
-  #main #delivery .delivery-cards {
-    grid-template-columns: 1fr;
-  }
 }/*# sourceMappingURL=style.css.map */

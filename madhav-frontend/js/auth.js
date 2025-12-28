@@ -75,6 +75,8 @@ async function checkAuthState() {
   const authBtn = document.getElementById("authButton");
   if (!authBtn) return;
 
+  const currentLang = localStorage.getItem("lang") || "en";
+
   try {
     const res = await fetch(`${API_BASE}/auth/profile.php`, {
       credentials: "include",
@@ -83,11 +85,12 @@ async function checkAuthState() {
     const data = await res.json();
 
     if (data.status === "success") {
-      authBtn.textContent = "Logout";
+      authBtn.textContent = currentLang === "guj" ? "લૉગઆઉટ" : "Logout";
       authBtn.href = "#";
       authBtn.onclick = logoutUser;
     } else {
-      authBtn.textContent = "Login / Signup";
+      authBtn.textContent =
+        currentLang === "guj" ? "લૉગિન / સાઇન અપ" : "Login / Signup";
       authBtn.href = "login.html";
     }
   } catch (err) {

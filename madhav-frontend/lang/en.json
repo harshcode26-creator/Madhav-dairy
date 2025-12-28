@@ -1,0 +1,17 @@
+{
+  "nav_home": "Home",
+  "nav_order": "Order",
+  "nav_contact": "Contact",
+  "nav_about": "About",
+
+  "auth_btn": "Login / Signup",
+  "logout": "Logout",
+
+  "hero_tag": "1-Hour Fast Delivery",
+  "hero_title_line1": "Daily Fresh Dairy,",
+  "hero_title_line2": "Delivered Fast.",
+  "hero_subtitle": "Serving Gandhidham and Adipur with premium quality dairy products delivered straight to your door.",
+
+  "subscribe_btn": "Subscribe Daily",
+  "order_btn": "Order Now"
+}

@@ -9,52 +9,60 @@
     rel="stylesheet"/>
 </head>
 <body>
-    <div id="main"> 
+    <div id="main">
+
+        <!------------------------------------------NAVBAR---------------------------------------------->
         <nav id="nav">
             <div class="nav-left">
                 <img src="assests/madhav_dairy_logo_transparent.png" alt="">
                 <p>
-                    Madhav Dairy <br>
-                    <span>Fresh & Pure</span>
+                    <span id="heading">Madhav Dairy</span><br>
+                    <span id="heading-title">Fresh & Pure</span>
                 </p>
             </div>
 
             <div id="nav-elements">
-                <p class="active">Home</p>
-                <p>Order</p>
-                <p>Contact</p>
-                <p>About</p>
+                <p class="active" data-i18n="nav_home"></p>
+                <p data-i18n="nav_order"></p>
+                <p data-i18n="nav_contact"></p>
+                <p data-i18n="nav_about"></p>
             </div>
 
             <div class="nav-right">
-                <button class="lang-btn">ગુજરાતી</button>
-                <button id="authButton" class="auth-btn">Login / Signup</button>
+                <button class="lang-btn" id="langbtn">ગુજરાતી</button>
+                <a href="login.html" id="authButton" class="auth-btn" data-i18n="auth_btn"></a>
             </div>
         </nav>
+        <!------------------------------------------NAVBAR---------------------------------------------->
 
+
+        <!------------------------------------------HERO SECTION---------------------------------------------->
         <section id="hero">
             <img src="assests/hero2.jpg" alt="">
             <div id="hero-content">
                 <div id="tag">
                     <span class="icon">⚡</span>
-                    1-Hour Fast Delivery
+                    <span data-i18n="hero_tag"></span>
                 </div>
 
                     
                 <h1>
-                    Daily Fresh Dairy,<br>
-                    <span> Delivered Fast.</span>
+                    <span data-i18n="hero_title_line1"></span><br>
+                    <span data-i18n="hero_title_line2"></span>
                 </h1>
 
-                <p id="subtitle">Serving Gandhidham and Adipur with premium quality dairy products delivered straight to your door.</p>
+                <p id="subtitle" data-i18n="hero_subtitle"></p>
 
                 <div class="buttons">
-                    <a href="#" class="btn subscribe">Subscribe Daily</a>
-                    <a href="#" class="btn order">Order Now</a>
+                    <a href="#" class="btn subscribe" data-i18n="subscribe_btn"></a>
+                    <a href="#" class="btn order" data-i18n="order_btn"></a>
                 </div>
             </div>
         </section>
+        <!------------------------------------------HERO SECTION---------------------------------------------->
 
+
+        <!------------------------------------------PRODUCTS SECTION---------------------------------------------->
         <section id="products-heading">
             <h3>OUR <span>PRODUCTS</span></h3>
             <p>Fresh, pure, and delivered with care. Choose from our range of quality dairy products.</p>
@@ -127,10 +135,13 @@
                 </div> -->
             </div>
         </section>
+        <!------------------------------------------PRODUCTS SECTION---------------------------------------------->
+
 
         <div class="section-transition"></div>
 
 
+        <!------------------------------------------DELIVERY SECTION---------------------------------------------->
         <section id="delivery">
             <div class="delivery-wrapper">
 
@@ -177,8 +188,10 @@
 
             </div>
         </section>
+        <!------------------------------------------DELIVERY SECTION---------------------------------------------->
 
 
+        <!------------------------------------------FOOTER---------------------------------------------->
         <footer class="footer">
             <div class="footer-top">
                 <div class="footer-col brand">
@@ -234,10 +247,13 @@
                 </div>
             </div>
         </footer>
-
+        <!------------------------------------------FOOTER---------------------------------------------->
 
     </div>
+
+
+    <script src="js/language.js"></script>
     <script src="js/auth.js"></script>
-   <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

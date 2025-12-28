@@ -1,26 +1,6 @@
-// function deliveryAnimation(){
-//   const cards = document.querySelectorAll(".delivery-cards .card");
-  
-//   const observer = new IntersectionObserver(
-//       (entries) => {
-//           entries.forEach((entry, index) => {
-//               if (entry.isIntersecting) {
-//                   setTimeout(() => {
-//                       entry.target.classList.add("show");
-//                   }, index * 120);
-//               }
-//           });
-//       },
-//       {
-//           threshold: 0.2
-//       }
-//   );
-  
-//   cards.forEach(card => observer.observe(card));
+/*------------------------------------------- ALL PRODUCTS CODES ------------------------------------------*/
 
-// }
-
-
+//HELPER FUNCTIONS
 function getImage(id){
   if (id === "1") return "assests/Milk.jpg";
   if (id === "2") return "assests/Milk.jpg";
@@ -43,7 +23,7 @@ function productCard(product){
   return `
     <div class="product">
         <div class="image-box">
-            <img src="${getImage(product.id)}" alt="${product.name}">
+            <img src="${getImage(product.id)}" alt="${product.name} loading="lazy"">
         </div>
 
         <div class="title">${product.name}</div>
@@ -57,6 +37,7 @@ function productCard(product){
   `;
 }
 
+//PRODUCTS FETCH FROM DATABSE AND RENDER IT IN UI
 async function showProducts() {
   try {
     const res = await fetch("http://localhost/madhav-dairy/madhav-backend/api/products/get-products.php");
@@ -68,35 +49,22 @@ async function showProducts() {
     const curdContainer = document.querySelector(".curdContainer");
     const processedContainer = document.querySelector(".processedContainer");
 
+    let milkcontainerclutter = "";
+    let curdcontainerclutter = "";
+    let proccesedcontainerclutter = "";
+
     data.products.forEach(product => {
-
       if (product.category_id == 1) {
-        milkContainer.innerHTML += productCard(product);
+        milkcontainerclutter += productCard(product);
+      }else if (product.category_id == 2) {
+        curdcontainerclutter += productCard(product);
+      }else if (product.category_id == 3) {
+        proccesedcontainerclutter += productCard(product);
       }
 
-      if (product.category_id == 2) {
-        curdContainer.innerHTML += productCard(product);
-      }
-
-      if (product.category_id == 3) {
-        processedContainer.innerHTML += productCard(product);
-      }
-
-    });
-    data.products.forEach(product => {
-
-      if (product.category_id == 1) {
-        milkContainer.innerHTML += productCard(product);
-      }
-
-      if (product.category_id == 2) {
-        curdContainer.innerHTML += productCard(product);
-      }
-
-      if (product.category_id == 3) {
-        processedContainer.innerHTML += productCard(product);
-      }
-
+      milkContainer.innerHTML = milkcontainerclutter;
+      curdContainer.innerHTML = curdcontainerclutter;
+      processedContainer.innerHTML = proccesedcontainerclutter;
     });
 
   } catch (error) {
@@ -105,6 +73,4 @@ async function showProducts() {
 }
 showProducts();
 
-document.querySelector(".auth-btn").addEventListener("click", function(){
-  window.location.href = "login.html";
-})
+/*------------------------------------------- ALL PRODUCTS CODES ------------------------------------------*/
