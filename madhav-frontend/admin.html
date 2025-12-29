@@ -12,6 +12,7 @@
     href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
     rel="stylesheet"
   />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -24,10 +25,11 @@
         <div class="field">
           <label for="adminEmail">Email</label>
           <input
-            type="email"
+            type="text"
             id="adminEmail"
             placeholder="Enter your email"
-            required
+            autocomplete="off"
+            autocorrect="off"
           />
         </div>
 
@@ -38,7 +40,8 @@
               type="password"
               id="adminPassword"
               placeholder="Enter password"
-              required
+              autocomplete="off"
+              autocorrect="off"
             />
             <i class="ri-eye-off-line"></i>
             <i class="ri-eye-line hidden"></i>

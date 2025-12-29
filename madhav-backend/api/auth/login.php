@@ -55,6 +55,9 @@ session_regenerate_id(true);
 
 $_SESSION["user_id"] = $user["id"];
 $_SESSION["role"] = $user["role_name"];
+$_SESSION["email"] = $user["email"];
+$_SESSION["name"] = $user["name"];
+
 
 echo json_encode([
     "status" => "success",

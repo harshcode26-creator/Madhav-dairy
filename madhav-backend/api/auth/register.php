@@ -1,7 +1,9 @@
 <?php
 header("Content-Type: application/json");
-
+session_start();
 require_once "../../config/db.php";
+require_once "../../helpers/sendVerificationMail.php";
+
 
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -18,11 +20,19 @@ if ($name === "" || $email === "" || $password === "") {
     exit;
 }
 
-if (strlen($password) < 6) {
+/* Strong password validation */
+if (
+    strlen($password) < 8 ||
+    !preg_match('/[A-Z]/', $password) ||
+    !preg_match('/[a-z]/', $password) ||
+    !preg_match('/[0-9]/', $password) ||
+    !preg_match('/[\W]/', $password)
+) {
     http_response_code(400);
     echo json_encode([
         "status" => "error",
-        "message" => "Password must be at least 6 characters"
+        "message" =>
+            "Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
     ]);
     exit;
 }
@@ -57,25 +67,69 @@ if (!$roleResult || mysqli_num_rows($roleResult) === 0) {
 }
 
 $role = mysqli_fetch_assoc($roleResult);
-$roleId = $role["id"];
+$roleId = (int) $role["id"];
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-/* Insert user */
-$insertSql = "INSERT INTO users (name, email, password, role_id) VALUES (?, ?, ?, ?)";
-$insertStmt = mysqli_prepare($conn, $insertSql);
-mysqli_stmt_bind_param($insertStmt, "sssi", $name, $email, $hashedPassword, $roleId);
+/* Generate email verification token */
+$verifyToken = bin2hex(random_bytes(32));
 
-if (mysqli_stmt_execute($insertStmt)) {
-    http_response_code(201);
-    echo json_encode([
-        "status" => "success",
-        "message" => "User registered successfully"
-    ]);
-} else {
+/* Insert user as unverified */
+$insertSql = "
+    INSERT INTO users (name, email, password, role_id, email_verified, email_verify_token)
+    VALUES (?, ?, ?, ?, 0, ?)
+";
+
+$insertStmt = mysqli_prepare($conn, $insertSql);
+mysqli_stmt_bind_param(
+    $insertStmt,
+    "sssis",
+    $name,
+    $email,
+    $hashedPassword,
+    $roleId,
+    $verifyToken
+);
+
+if (!mysqli_stmt_execute($insertStmt)) {
     http_response_code(500);
     echo json_encode([
         "status" => "error",
         "message" => "Registration failed"
     ]);
+    exit;
 }
+
+/* Auto login (but unverified) */
+$userId = mysqli_insert_id($conn);
+session_regenerate_id(true);
+
+$_SESSION["user_id"] = $userId;
+$_SESSION["role"] = "user";
+$_SESSION["email_verified"] = false;
+$_SESSION["email"] = $email;
+$_SESSION["name"] = $name;
+
+$mailSent = sendVerificationMail($email, $name, $verifyToken);
+
+if (!$mailSent) {
+    // rollback user creation
+    $deleteSql = "DELETE FROM users WHERE email = ?";
+    $deleteStmt = mysqli_prepare($conn, $deleteSql);
+    mysqli_stmt_bind_param($deleteStmt, "s", $email);
+    mysqli_stmt_execute($deleteStmt);
+
+    http_response_code(500);
+    echo json_encode([
+        "status" => "error",
+        "message" => "Unable to send verification email. Please try again later."
+    ]);
+    exit;
+}
+
+
+http_response_code(201);
+echo json_encode([
+    "status" => "success",
+    "message" => "Account created. Please check your email to verify your account."
+]);

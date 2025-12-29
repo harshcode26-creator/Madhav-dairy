@@ -12,6 +12,7 @@
     href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
     rel="stylesheet"
   />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -30,7 +31,8 @@
             id="name"
             name="name"
             placeholder="Enter your name"
-            required
+            autocomplete="off"
+            autocorrect="off"
           />
         </div>
 
@@ -41,7 +43,8 @@
             id="signupEmail"
             name="email"
             placeholder="you@example.com"
-            required
+            autocomplete="off"
+            autocorrect="off"
           />
         </div>
 
@@ -53,7 +56,8 @@
               id="signupPassword"
               name="password"
               placeholder="At least 8 charcters"
-              required
+              autocomplete="off"
+              autocorrect="off"
             />
             <i class="ri-eye-off-line icon"></i>
             <i class="ri-eye-line hidden icon"></i>
@@ -68,7 +72,8 @@
               type="password"
               id="confirmPassword"
               placeholder="Confirm password"
-              required
+              autocomplete="off"
+              autocorrect="off"
             />
             
             <i class="ri-eye-off-line icon"></i>

@@ -15,7 +15,7 @@ if (!isset($_SESSION["user_id"])) {
 $userId = $_SESSION["user_id"];
 
 $sql = "
-    SELECT users.id, users.name, users.email, roles.role_name
+    SELECT users.id, users.name, users.email, users.email_verified, roles.role_name
     FROM users
     JOIN roles ON users.role_id = roles.id
     WHERE users.id = ?
@@ -38,6 +38,22 @@ if (mysqli_num_rows($result) === 0) {
 
 $user = mysqli_fetch_assoc($result);
 
+/* Email not verified */
+if ((int) $user["email_verified"] === 0) {
+    echo json_encode([
+        "status" => "unverified",
+        "message" => "Please verify your email",
+        "user" => [
+            "id" => $user["id"],
+            "name" => $user["name"],
+            "email" => $user["email"],
+            "role" => $user["role_name"]
+        ]
+    ]);
+    exit;
+}
+
+/* Email verified */
 echo json_encode([
     "status" => "success",
     "user" => [
