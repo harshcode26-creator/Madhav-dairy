@@ -43,7 +43,6 @@
             id="signupEmail"
             name="email"
             placeholder="you@example.com"
-            autocomplete="off"
             autocorrect="off"
           />
         </div>
@@ -86,6 +85,38 @@
         </button>
 
       </form>
+
+
+      <!-- OTP SECTION -->
+      <div id="otpSection" class="hidden otp-section">
+        <h3>Verify Your Email</h3>
+        <p class="otp-text">
+          Please enter the 6 digit OTP sent to your email.
+        </p>
+
+        <input
+          type="text"
+          id="otpInput"
+          placeholder="Enter OTP"
+          maxlength="6"
+          autocomplete="off"
+          autocorrect="off"
+        />
+
+        <p id="otpTimer" class="otp-timer">
+          OTP expires in <span>10:00</span>
+        </p>
+
+
+        <button id="verifyOtpBtn" class="btn-primary">
+          Verify OTP
+        </button>
+
+        <p class="resend-text">
+          Didn’t receive the code?
+          <span id="resendOtpBtn">Resend OTP</span>
+        </p>
+      </div>
 
       <button class="btn-google" disabled>
         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">

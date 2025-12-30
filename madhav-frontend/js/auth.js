@@ -243,9 +243,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.status === "success") {
           Swal.fire({
             icon: "success",
-            title: "Verify Your Email",
-            text: "We have sent a verification link to your email. Please verify to continue.",
+            title: "OTP Sent",
+            text: "We have sent a 6 digit OTP to your email.",
             confirmButtonText: "OK",
+          }).then(() => {
+              document.getElementById("signupForm").classList.add("hidden");
+              document.getElementById("otpSection").classList.remove("hidden");
+              startOtpTimer();
+
+              const googleBtn = document.querySelector(".btn-google");
+              const footerText = document.querySelector(".footer-text");
+
+              if (googleBtn) googleBtn.classList.add("hidden");
+              if (footerText) footerText.classList.add("hidden");
           });
         } else {
           showError("Signup Failed", data.message || "Unable to create account");
@@ -258,6 +268,151 @@ document.addEventListener("DOMContentLoaded", function () {
     checkAuthState();
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const verifyBtn = document.getElementById("verifyOtpBtn");
+  if (!verifyBtn) return;
+
+  verifyBtn.addEventListener("click", async function () {
+    const otp = document.getElementById("otpInput").value.trim();
+
+    if (otp.length !== 6) {
+      showError("Invalid OTP", "Please enter a valid 6 digit OTP");
+      return;
+    }
+
+    try {
+      Swal.fire({
+        title: "Verifying OTP...",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+
+      const res = await fetch(`${API_BASE}/auth/verify-otp.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ otp })
+      });
+
+      const data = await res.json();
+
+      if (data.status === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Verified",
+          text: "Email verified successfully",
+          timer: 1200,
+          showConfirmButton: false,
+        }).then(() => {
+          window.location.href = "index.html";
+        });
+      } else {
+        showError("Verification Failed", data.message);
+      }
+
+    } catch (err) {
+      showError("Error", "Something went wrong. Please try again.");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const resendBtn = document.getElementById("resendOtpBtn");
+  if (!resendBtn) return;
+
+resendBtn.addEventListener("click", async function () {
+  if (resendBtn.classList.contains("disabled")) return;
+
+  try {
+    Swal.fire({
+      title: "Resending OTP...",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    const res = await fetch(`${API_BASE}/auth/resend-otp.php`, {
+      credentials: "include"
+    });
+
+    const data = await res.json();
+
+    if (data.status === "success") {
+      Swal.fire({
+        icon: "success",
+        title: "OTP Sent",
+        text: "A new OTP has been sent to your email",
+        timer: 1200,
+        showConfirmButton: false
+      });
+
+      startOtpTimer();        // restart expiry timer
+      startResendCooldown();  // start cooldown
+
+    } else {
+      showError("Error", data.message);
+    }
+  } catch (err) {
+    showError("Error", "Unable to resend OTP");
+  }
+});
+
+});
+let otpExpirySeconds = 200; // 10 minutes
+let otpTimerInterval = null;
+
+function startOtpTimer() {
+  const timerEl = document.querySelector("#otpTimer span");
+  if (!timerEl) return;
+
+  otpExpirySeconds = 200;
+  clearInterval(otpTimerInterval);
+
+  otpTimerInterval = setInterval(() => {
+    const minutes = Math.floor(otpExpirySeconds / 60);
+    const seconds = otpExpirySeconds % 60;
+
+    timerEl.textContent =
+      `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+    otpExpirySeconds--;
+
+    if (otpExpirySeconds < 0) {
+      clearInterval(otpTimerInterval);
+      timerEl.textContent = "Expired";
+      showWarning("OTP Expired", "Please resend OTP to continue");
+    }
+  }, 1000);
+}
+
+let resendCooldown = 30;
+let resendInterval = null;
+
+function startResendCooldown() {
+  const resendBtn = document.getElementById("resendOtpBtn");
+  if (!resendBtn) return;
+
+  resendBtn.classList.add("disabled");
+  resendBtn.textContent = `Resend OTP (${resendCooldown}s)`;
+
+  resendInterval = setInterval(() => {
+    resendCooldown--;
+    resendBtn.textContent = `Resend OTP (${resendCooldown}s)`;
+
+    if (resendCooldown <= 0) {
+      clearInterval(resendInterval);
+      resendBtn.classList.remove("disabled");
+      resendBtn.textContent = "Resend OTP";
+      resendCooldown = 30;
+    }
+  }, 1000);
+}
 
 
 /* ---------------- ADMIN LOGIN ---------------- */

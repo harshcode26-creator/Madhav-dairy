@@ -25,13 +25,21 @@ body {
   width: 100%;
 }
 
+body.swal2-shown {
+  padding-right: 0 !important;
+}
+html {
+  overflow-y: scroll;
+}
+
+
 .hidden{
   display: none;
 }
 
 /* page */
 .signup-page {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -162,6 +170,69 @@ body {
         font-weight: 600;
         cursor: pointer;
       }
+    }
+
+    .otp-section {
+      margin-top: 10px;
+      text-align: center;
+
+      h3 {
+        font-size: 1.3vw;
+        color: $text-dark;
+        margin-bottom: 8px;
+      }
+
+      .otp-text {
+        font-size: 0.85vw;
+        color: $text-muted;
+        margin-bottom: 18px;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: $radius-sm;
+        border: 1px solid $border;
+        outline: none;
+        text-align: center;
+        letter-spacing: 6px;
+        font-size: 1.1vw;
+        margin-bottom: 16px;
+
+        &:focus {
+          border-color: $focus;
+        }
+      }
+
+      .resend-text {
+        font-size: 0.8vw;
+        color: $text-muted;
+        margin-top: 10px;
+
+        span {
+          color: #8abfff;
+          font-weight: 600;
+          cursor: pointer;
+
+          &.disabled {
+            color: #9ca3af;
+            cursor: not-allowed;
+          }
+
+        }
+      }
+
+      .otp-timer {
+        font-size: 0.8vw;
+        color: $text-muted;
+        margin-bottom: 12px;
+
+        span {
+          font-weight: 600;
+          color: $text-dark;
+        }
+      }
+
     }
   }
 }

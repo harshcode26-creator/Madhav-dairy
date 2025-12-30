@@ -189,13 +189,21 @@ body {
   width: 100%;
 }
 
+body.swal2-shown {
+  padding-right: 0 !important;
+}
+
+html {
+  overflow-y: scroll;
+}
+
 .hidden {
   display: none;
 }
 
 /* page */
 .signup-page {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -308,6 +316,57 @@ body {
   color: #8abfff;
   font-weight: 600;
   cursor: pointer;
+}
+.signup-page .signup-card .otp-section {
+  margin-top: 10px;
+  text-align: center;
+}
+.signup-page .signup-card .otp-section h3 {
+  font-size: 1.3vw;
+  color: #1F2937;
+  margin-bottom: 8px;
+}
+.signup-page .signup-card .otp-section .otp-text {
+  font-size: 0.85vw;
+  color: #6B7280;
+  margin-bottom: 18px;
+}
+.signup-page .signup-card .otp-section input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  outline: none;
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 1.1vw;
+  margin-bottom: 16px;
+}
+.signup-page .signup-card .otp-section input:focus {
+  border-color: #8ad8ff;
+}
+.signup-page .signup-card .otp-section .resend-text {
+  font-size: 0.8vw;
+  color: #6B7280;
+  margin-top: 10px;
+}
+.signup-page .signup-card .otp-section .resend-text span {
+  color: #8abfff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.signup-page .signup-card .otp-section .resend-text span.disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+.signup-page .signup-card .otp-section .otp-timer {
+  font-size: 0.8vw;
+  color: #6B7280;
+  margin-bottom: 12px;
+}
+.signup-page .signup-card .otp-section .otp-timer span {
+  font-weight: 600;
+  color: #1F2937;
 }
 
 /* variables */

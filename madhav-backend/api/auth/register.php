@@ -4,7 +4,6 @@ session_start();
 require_once "../../config/db.php";
 require_once "../../helpers/sendVerificationMail.php";
 
-
 $data = json_decode(file_get_contents("php://input"), true);
 
 $name = trim($data["name"] ?? "");
@@ -71,24 +70,30 @@ $roleId = (int) $role["id"];
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-/* Generate email verification token */
-$verifyToken = bin2hex(random_bytes(32));
+/* Generate 6 digit OTP */
+$otp = random_int(100000, 999999);
+$hashedOtp = password_hash((string)$otp, PASSWORD_DEFAULT);
 
-/* Insert user as unverified */
+/* OTP expiry: 10 minutes */
+$otpExpiry = date("Y-m-d H:i:s", strtotime("+10 minutes"));
+
+/* Insert user */
 $insertSql = "
-    INSERT INTO users (name, email, password, role_id, email_verified, email_verify_token)
-    VALUES (?, ?, ?, ?, 0, ?)
+    INSERT INTO users 
+    (name, email, password, role_id, email_verified, email_otp, email_otp_expires)
+    VALUES (?, ?, ?, ?, 0, ?, ?)
 ";
 
 $insertStmt = mysqli_prepare($conn, $insertSql);
 mysqli_stmt_bind_param(
     $insertStmt,
-    "sssis",
+    "ssisss",
     $name,
     $email,
     $hashedPassword,
     $roleId,
-    $verifyToken
+    $hashedOtp,
+    $otpExpiry
 );
 
 if (!mysqli_stmt_execute($insertStmt)) {
@@ -100,7 +105,7 @@ if (!mysqli_stmt_execute($insertStmt)) {
     exit;
 }
 
-/* Auto login (but unverified) */
+/* Auto login but unverified */
 $userId = mysqli_insert_id($conn);
 session_regenerate_id(true);
 
@@ -110,26 +115,26 @@ $_SESSION["email_verified"] = false;
 $_SESSION["email"] = $email;
 $_SESSION["name"] = $name;
 
-$mailSent = sendVerificationMail($email, $name, $verifyToken);
+/* Send OTP email */
+$mailSent = sendVerificationMail($email, $name, $otp);
 
 if (!$mailSent) {
-    // rollback user creation
-    $deleteSql = "DELETE FROM users WHERE email = ?";
+    /* rollback user if mail fails */
+    $deleteSql = "DELETE FROM users WHERE id = ?";
     $deleteStmt = mysqli_prepare($conn, $deleteSql);
-    mysqli_stmt_bind_param($deleteStmt, "s", $email);
+    mysqli_stmt_bind_param($deleteStmt, "i", $userId);
     mysqli_stmt_execute($deleteStmt);
 
     http_response_code(500);
     echo json_encode([
         "status" => "error",
-        "message" => "Unable to send verification email. Please try again later."
+        "message" => "Unable to send OTP. Please try again."
     ]);
     exit;
 }
 
-
 http_response_code(201);
 echo json_encode([
     "status" => "success",
-    "message" => "Account created. Please check your email to verify your account."
+    "message" => "OTP sent to your email. Please verify to continue."
 ]);
